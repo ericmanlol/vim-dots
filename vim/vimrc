@@ -180,6 +180,9 @@ set magic
 " show incomplete commands
 set showcmd
 
+" paste
+set paste
+
 "}}}
 
 
@@ -415,3 +418,18 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 call s:source_rc('unite.rc.vim')
 
 "}}}
+
+
+" Test
+"autocmd MyAutoCmd FileType unite call s:unite_settings()
+
+" Auto-reload when .vimrc changes {{{
+"===============================================================================
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
+"}}}
+
+
