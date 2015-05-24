@@ -1,0 +1,8 @@
+neobundle.vim
+neosnippet-snippets
+neosnippet.vim
+unite.vim
+vim-airline
+vim-colorschemes
+vim-fugitive
+vimshell
