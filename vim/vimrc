@@ -59,6 +59,8 @@ NeoBundle 'w0ng/vim-hybrid'
 " Misc
 NeoBundle 'sjl/gundo.vim'
 
+"Languages
+NeoBundle 'fatih/vim-go'
 
 
 " You can specify revision/branch/tag.
