@@ -24,11 +24,20 @@ NeoBundle 'Shougo/unite.vim'
 "NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'flazz/vim-colorschemes'
 
+" Status bar
 NeoBundle 'bling/vim-airline' " So much faster than Powerline! :)
 
 
 
+" File browsing
+NeoBundle 'scrooloose/nerdtree'
 
+" Comments
+NeoBundle 'scrooloose/nerdcommenter'
+
+
+" Tags
+NeoBundle 'majutsushi/tagbar'
 
 
 
@@ -196,7 +205,7 @@ nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
 nnoremap <Leader>, <C-w>p
 
 " <Leader>e: Fast editing of the .vimrc
-nnoremap <Leader>e :e! ~/dotfiles/.vimrc<cr>
+nnoremap <Leader>e :e! ~/.vimrc<cr>
 
 " <Leader>w: Close current buffer
 nnoremap <Leader>w :bdelete<cr>
@@ -356,3 +365,19 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 "}}}
 
+
+" Unite {{{
+"===============================================================================
+
+
+" Map space to the prefix for Unite
+nnoremap [unite] <Nop>
+nmap <space> [unite]
+
+" General fuzzy search
+nnoremap <silent> [unite]<space> :<C-u>Unite
+      \ -buffer-name=files buffer file_mru bookmark file_rec/async
+      \ -prompt-direction="top"<CR>
+
+
+"}}}
