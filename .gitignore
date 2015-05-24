@@ -23,26 +23,8 @@
 .java
 .vim/bundle*
 .vim/vim-powerline*
-.vim/.*
+
 .bak/*
-.config/awesome-*
-.config/awesome/awesome-*
-.config/chromium*
-.config/configstore*
-.sublime/*
-.config/menus*
-.config/powerline/*
-.config/*auto*
-.config/st3*
-.config/sublime-text*
-.config/*[Tt]roll*
-.config/qup*
-.config/*gtk*
-.conig/yarpen.cz
-.config/*/*sql*
-.config/dwb*
-.config/ipython*
-.config/awesome/lain
 old/*
 .zhistory
 *.DS_Store*
@@ -50,7 +32,6 @@ old/*
 .zcompcache/*
 .*cache*/*
 *cache*
-*twty*
 ############
 
 # Packages #
@@ -76,5 +57,3 @@ old/*
 ehthumbs.db
 Icon?
 Thumbs.db
-
-vim/bundle/*

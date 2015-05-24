@@ -16,13 +16,15 @@ call neobundle#begin(expand('/Users/woo/.vim/bundle'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Bundles here:
+" Bundles starting here:
+
+" main
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-
+NeoBundle 'tpope/vim-dispatch'
 
 "NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'flazz/vim-colorschemes'
@@ -34,6 +36,7 @@ NeoBundle 'bling/vim-airline' " So much faster than Powerline! :)
 
 " File browsing
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Shougo/vimfiler'
 
 " Comments
 NeoBundle 'scrooloose/nerdcommenter'
@@ -53,6 +56,20 @@ NeoBundle 'sjl/gundo.vim'
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+
+NeoBundle 'Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'windows' : 'tools\\update-dll-mingw',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'linux' : 'make',
+      \     'unix' : 'gmake',
+      \    },
+      \ }
+
+
+" End Bundles
+
 
 " Required:
 call neobundle#end()
@@ -179,12 +196,16 @@ let g:github='https://github.com/ericmanlol'
 nmap <F1> [unite]h
 
 " <F2>: Open Vimfiler
+nnoremap <F2> :<C-u>VimFiler<CR>
 
 " <F3>: Gundo
 nnoremap <F3> :<C-u>GundoToggle<CR>
 
 " <F4>: Save session
 nnoremap <F4> :<C-u>UniteSessionSave
+
+" <F9>: Dispatch
+nnoremap <F9> :Dispatch<CR>
 
 "}}}
 
@@ -387,7 +408,9 @@ nmap <space> [unite]
 " General fuzzy search
 nnoremap <silent> [unite]<space> :<C-u>Unite
       \ -buffer-name=files buffer file_mru bookmark file_rec/async
-      \ -prompt-direction="top"<CR>
+      \ -prompt-direction="bottom"<CR>
 
+" content searching like ack.vim or ag.vim
+nnoremap <space>/ :Unite grep:.<cr>
 
 "}}}
