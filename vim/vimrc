@@ -236,6 +236,9 @@ let g:mapleader = ","
 let maplocalleader = ","
 let g:maplocalleader = ","
 
+" toggle list for special chars + thanks @ian
+noremap <leader>l :set nolist!<CR>
+
 
 " <Leader>``: Force quit all
 nnoremap <Leader>`` :qa!<cr>
