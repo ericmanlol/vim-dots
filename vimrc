@@ -42,6 +42,13 @@ NeoBundle 'scrooloose/nerdcommenter'
 " Tags
 NeoBundle 'majutsushi/tagbar'
 
+" Color themes
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'w0ng/vim-hybrid'
+
+" Misc
+NeoBundle 'sjl/gundo.vim'
+
 
 
 " You can specify revision/branch/tag.
