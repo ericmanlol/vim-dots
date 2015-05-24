@@ -1,0 +1,358 @@
+" github.com/ericmanlol
+
+if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
+  " Required:
+  set runtimepath+=/Users/woo/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('/Users/woo/.vim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Bundles here:
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'Shougo/unite.vim'
+"NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'flazz/vim-colorschemes'
+
+NeoBundle 'bling/vim-airline' " So much faster than Powerline! :)
+
+
+
+
+
+
+
+" You can specify revision/branch/tag.
+NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+
+
+" general settings {{{
+"====================================================================
+
+syntax on
+
+set number
+
+set textwidth=79
+set wrap
+set whichwrap+=h,l,<,>,[,]
+
+" give one virtual space at end of line
+set virtualedit=onemore
+
+" 256bit terminal
+set t_Co=256
+
+" alway show last status line
+set laststatus=2
+
+" spacing / indents
+set autoindent
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set smarttab
+set expandtab
+set backspace=indent,eol,start
+" set nosmartindent
+set smartindent
+
+set hlsearch
+
+" case insensitive search
+set ignorecase
+set smartcase
+
+" search improvement
+set incsearch
+set noanti
+set history=500
+
+
+" turn backup off
+set nobackup
+set nowritebackup
+set noswapfile
+
+" auto read when outside changes
+set autoread
+
+" allow change buffer without saving it first
+set hidden
+
+set title
+set cursorline
+
+" explicitly set encoding to utf-8
+set encoding=utf-8
+set termencoding=utf-8
+
+" display unprintable chars
+set list
+set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
+set showbreak=↪
+
+
+
+" minimal number of screen lines to keep above and below the cursor
+set scrolloff=10
+
+" how many lines to scroll at a time, make scrolling appears faster
+set scrolljump=3
+
+" auto complete setting
+set completeopt=longest,menuone
+
+" split to the right and below
+set splitright
+set splitbelow
+
+" testing this for split height
+set winheight=50
+
+" regex
+set magic
+
+" show incomplete commands
+set showcmd
+
+"}}}
+
+
+
+"Snippets Variables {{{
+
+let g:snips_author='Eric Man'
+let g:author='Eric Man'
+let g:snips_email='ericman@ericman.com'
+let g:email='ericman@ericman.com'
+let g:snips_github='https://github.com/ericmanlol'
+let g:github='https://github.com/ericmanlol'
+
+"}}}
+
+
+"Function Key Mappings {{{
+"===============================================================================
+
+" <F1>: Help
+nmap <F1> [unite]h
+
+" <F2>: Open Vimfiler
+
+" <F3>: Gundo
+nnoremap <F3> :<C-u>GundoToggle<CR>
+
+" <F4>: Save session
+nnoremap <F4> :<C-u>UniteSessionSave
+
+"}}}
+
+
+" Leader Key Mappings {{{
+"===============================================================================
+
+" Map leader and localleader key to comma
+let mapleader = ","
+let g:mapleader = ","
+let maplocalleader = ","
+let g:maplocalleader = ","
+
+
+" <Leader>``: Force quit all
+nnoremap <Leader>`` :qa!<cr>
+
+" <Leader>1: Toggle between paste mode
+nnoremap <silent> <Leader>1 :set paste!<cr>
+
+" <Leader>2: Toggle Tagbar
+nnoremap <silent> <Leader>2 :TagbarToggle<cr>
+
+" <Leader>tab: Toggles NERDTree
+nnoremap <silent> <Leader><tab> :NERDTreeToggle<cr>
+
+" <Leader>,: Switch to previous split
+nnoremap <Leader>, <C-w>p
+
+" <Leader>e: Fast editing of the .vimrc
+nnoremap <Leader>e :e! ~/dotfiles/.vimrc<cr>
+
+" <Leader>w: Close current buffer
+nnoremap <Leader>w :bdelete<cr>
+
+" <Leader>0: Run the visually selected code in python and replace it with the
+" output
+vnoremap <silent> <Leader>0 :!python<cr>
+
+nnoremap <Leader>0 :! perl %<cr>
+
+" <Leader>o: only
+nnoremap <Leader>o :only<cr>
+
+" <Leader>p: Copy the full path of the current file to the clipboard
+nnoremap <silent> <Leader>p :let @+=expand("%:p")<cr>:echo "Copied current file
+      \ path '".expand("%:p")."' to clipboard"<cr>
+
+
+" <Leader>f: Open Quickfix
+nnoremap <silent> <Leader>f :botright copen<CR>
+
+" <Leader>c*: NERDCommenter mappings
+" <Leader>cd: Switch to the directory of the open buffer
+nnoremap <Leader>cd :cd %:p:h<cr>:pwd<cr>
+
+
+"}}}
+
+
+" Command-line/Normal Mode Key Mappings {{{
+"===============================================================================
+
+" Bash like keys for the command line. These resemble personal zsh mappings
+"cnoremap <c-a> <home>
+"cnoremap <c-e> <end>
+
+
+"godly toggling of comments
+nmap \ <Leader>c<space>
+
+
+
+" Ctrl-Space: Quick scratch buffer
+nmap <C-@> <Plug>(scratch-open)
+nmap <C-Space> <C-@>
+
+
+
+
+
+" Shift-Tab: NERDTree
+nnoremap <silent> <S-Tab> :NERDTreeToggle<CR>
+
+" Q: Closes the window
+nnoremap Q :q<cr>
+
+" W: Save
+nnoremap W :w<cr>
+
+" E: Move to end of word forward
+
+" R: Reindent entire file
+nnoremap R mqHmwgg=G`wzt`q
+
+
+"}}}
+
+
+" Normal Mode Shift Key Mappings {{{
+"===============================================================================
+
+" Shift-Tab: NERDTree
+nnoremap <S-Tab> :NERDTreeToggle<CR>
+
+" Q: Closes the window
+nnoremap Q :q<cr>
+
+" U: Redos since 'u' undos
+nnoremap U :redo<cr>
+
+" _ : Quick horizontal splits
+nnoremap _ :sp<cr>
+
+" | : Quick vertical splits
+nnoremap <bar> :vsp<cr>
+
+" J: expand-region
+map K <Plug>(expand_region_expand)
+
+" K: shrink-region
+map J <Plug>(expand_region_shrink)
+
+" :: Remap to ,. After all the remapping, ; goes to command mode, . repeats
+" fFtT, : repeats it backward, and , is the leader
+"this is disabled and removed because I almost owned myself hard
+
+" Z: Bufsurf back
+nnoremap <silent> Z :BufSurfBack<CR>
+
+" X: Bufsurf forward
+nnoremap <silent> X :BufSurfForward<CR>
+
+
+
+" +/-: Increment number
+nnoremap + <c-a>
+nnoremap - <c-x>
+
+"}}}
+
+" Normal Mode Meta Key Mappings {{{
+"===============================================================================
+
+" Alt-a: Select all
+nnoremap  :keepjumps normal ggVG<CR>
+
+
+"alt+h go back to previous buffer
+" nnoremap <silent> h :bprevious<CR>
+
+" Alt-l: Go to next buffer
+" nnoremap <silent> l :bnext<CR>
+
+"was previous conflict with alt+h, but decided to sacrifice the awesomeWM
+"X keybinding which I hardly ever use anyway
+" nnoremap <C-b> <c-^>
+
+"}}}
+
+
+" Visual Key Mappings {{{
+"===============================================================================
+
+"Comment/Uncomment Toggle of the gods..
+xmap \ <Leader>c<space>
+
+"}}}
+
+
+" Insert Mode Mappings {{{
+"===============================================================================
+
+
+imap jj <Esc>
+imap Jk <Esc>
+
+
+"}}}
+
+" Airline{{{
+"===============================================================================
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+
+"}}}
+
