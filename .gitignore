@@ -76,3 +76,5 @@ old/*
 ehthumbs.db
 Icon?
 Thumbs.db
+
+vim/bundle/*
