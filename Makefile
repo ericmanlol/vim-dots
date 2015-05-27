@@ -1,10 +1,15 @@
 .PHONY: clean link post-link
 
+TIMESTAMP := $(shell date +"%Y%m%d_%H%M%S")
 
-clean :
+clean:	save
 	rm ~/.vim ~/.vimrc
 
-link :
+save:
+	cp -r ~/.vim /tmp/.vim-$(TIMESTAMP)
+	cp ~/.vimrc /tmp/.vimrc-$(TIMESTAMP)
+
+link:	
 	ln -s ~/vim-dots/vim/vimrc ~/.vimrc
 	ln -s ~/vim-dots/vim ~/.vim
 
