@@ -1,4 +1,5 @@
-all: clean link post-link
+.PHONY: clean link post-link
+
 
 clean :
 	rm ~/.vim ~/.vimrc
@@ -9,6 +10,7 @@ link :
 
 post-link:
 	chmod +x scriznips/install_neobundle.sh
-	./scriznips/install_neobundle.sh
+	# ./scriznips/install_neobundle.sh
+	curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 
-.PHONY: clean link post-link
+
